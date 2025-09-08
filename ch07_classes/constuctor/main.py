@@ -69,7 +69,6 @@ del man
 james is dead.
 '''
 
-
 # class Person:
 #     def __init__(self, name):
 #         self.name = name
@@ -93,30 +92,43 @@ student1 객체를 생성
 
 getter만 활용하여
 김일 학생의 나이는 20살로 , 파이썬 과목의 점수는 4.5 점입니다.
+
 '''
+
+
 class Student:
     def set_name(self, name):
         self.name = name
+
     def set_age(self, age):
-        self.age = age
+        if 0 <= age <= 200:
+            self.age = age
+
     def set_address(self, address):
         self.address = address
+
     def set_score(self, score):
-        self.score = score
+        if 0.0 <= score <= 4.5:
+            self.score = score
 
     def get_name(self):
         return self.name
+
     def get_age(self):
         return self.age
+
     def get_address(self):
         return self.address
+
     def get_score(self):
         return self.score
+
 
 student1 = Student()
 student1.set_name('김일')
 student1.set_age(20)
 student1.set_score(4.5)
 print(f'{student1.get_name()}학생의 나이는{student1.get_age()}살로, 파이썬 과목의 점수는{student1.get_score()}점 입니다.')
-class MyClass:
-    pass
+
+student1.set_age(300)
+print(f'{student1.get_age()}')
