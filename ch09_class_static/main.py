@@ -137,21 +137,39 @@ print(f'매출 : {Shop.get_total()원'})
 
 class Shop:
     total = 0
-    menu_list = [{'떡볶이': 3000, '라면' : 4000}, {'순대': 4000}, {'튀김': 500}, {'김밥': 2000}]
+    total2 = 0
+    menu_list = [{'떡볶이': 3000}, {'순대': 4000}, {'튀김': 500}, {'김밥': 2000}]
+    menu_dict = {
+        '떡볶이': 3000,
+        '순대': 4000,
+        '튀김': 500,
+        '김밥': 2000,
+    }
 
     @classmethod
-    def sales(cls,name,num):
+    def sales(cls, name, num):
         for item in cls.menu_list:
             if name in item.keys():
-                print(item.keys())
                 cls.total += item[name] * num
-                print(f'{name} {num}개 판매 !')
+                print(f'{name} {num}개 판매')
+
+    @classmethod
+    def sales2(cls, name, num):
+        if name in cls.menu_dict.keys():
+            cls.total += cls.menu_dict[name] * num
+            print(f'{name} {num}개 판매')
 
     @classmethod
     def get_total(cls):
         return cls.total
 
-Shop.sales('떡볶이',1)
-Shop.sales('김밥',1)
-Shop.sales('튀김',5)
+
+Shop.sales('떡볶이', 1)
+Shop.sales('김밥', 1)
+Shop.sales('튀김', 5)
+print(f'매출 : {Shop.get_total()}원')
+
+Shop.sales2('떡볶이', 2)
+Shop.sales2('김밥', 2)
+Shop.sales2('튀김', 2)
 print(f'매출 : {Shop.get_total()}원')
